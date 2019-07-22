@@ -5,7 +5,9 @@ const storeController = require('./controllers/storeController')
 
 const app = express();
 
+require('./db/db');
 
+app.use(bodyParser.urlencoded({extended:false}));
 //HOME PAGE
 app.get('/', (req,res) => {
 	res.render('index.ejs')

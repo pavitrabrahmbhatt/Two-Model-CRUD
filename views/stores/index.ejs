@@ -15,8 +15,17 @@
           <li>
             <a href="/stores/new">Create a new Store</a>
           </li>
+
         </ul>
       </nav>
+         <h2>List of Stores</h2>
+              <ul>
+                  <% for(let i = 0; i < stores.length; i++){ %>
+                      <li>
+                          <a href="/stores/<%=stores[i]._id%>"><%=stores[i].storeName%></a>
+                      </li>
+                  <% } %>
+              </ul>
     </header>
   </body>
 </html>

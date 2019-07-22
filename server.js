@@ -8,6 +8,7 @@ const app = express();
 require('./db/db');
 
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(methodOverride('_method'));
 //HOME PAGE
 app.get('/', (req,res) => {
 	res.render('index.ejs')

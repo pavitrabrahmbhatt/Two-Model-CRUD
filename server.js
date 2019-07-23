@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-const storeController = require('./controllers/storeController')
+const userController = require('./controllers/userController')
 
 const app = express();
 
@@ -14,7 +14,7 @@ app.get('/', (req,res) => {
 	res.render('index.ejs')
 })
 
-app.use("/stores", storeController)
+app.use("/users", userController)
 
 
 app.listen(3000, () => {

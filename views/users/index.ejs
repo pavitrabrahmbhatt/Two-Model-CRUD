@@ -6,23 +6,23 @@
   </head>
   <body>
     <header>
-      <h1>Stores</h1>
+      <h1>Users</h1>
       <nav>
         <ul>
           <li>
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="/stores/new">Create a new Store</a>
+            <a href="/users/new">Create a new User</a>
           </li>
 
         </ul>
       </nav>
-         <h2>List of Stores</h2>
+         <h2>List of Users</h2>
               <ul>
-                  <% for(let i = 0; i < stores.length; i++){ %>
+                  <% for(let i = 0; i < users.length; i++){ %>
                       <li>
-                          <a href="/stores/<%=stores[i]._id%>"><%=stores[i].storeName%></a>
+                          <a href="/users/<%=users[i]._id%>"><%=users[i].userName%></a>
                       </li>
                   <% } %>
               </ul>

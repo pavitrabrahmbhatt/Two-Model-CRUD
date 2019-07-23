@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const Store = require("../models/store.js")
+const User = require("../models/user.js")
 
 
 router.get('/', (req, res, next)=>{
-  Store.find({},(err,stores)=>{
+  User.find({},(err,users)=>{
   	if(err) next(err);
   	else {
-  		res.render('stores/index.ejs', {
-  			stores: stores
+  		res.render('users/index.ejs', {
+  			users: users
   		})
   	}
   })
@@ -18,65 +18,67 @@ router.get('/', (req, res, next)=>{
 
 
 router.get("/new",(req,res) => {
-	res.render("stores/new.ejs")
+	res.render("users/new.ejs")
 })
 
 
 
 router.delete('/:id', (req, res) => {
-  Store.findOneAndDelete(req.params.id, (err, response) => {
+  User.findOneAndDelete(req.params.id, (err, response) => {
     if(err){
       res.send(err);
     } else {
       console.log(response)
-      res.redirect('/stores');
+      res.redirect('/users');
     };
   });
 });
 
 
 router.get('/:id/edit', (req, res) => {
-  Store.findById(req.params.id, (err, foundStore) => {
+  User.findById(req.params.id, (err, foundUser) => {
     if(err){
       res.send(err);
     } else {
-      console.log(foundStore)
-      res.render('stores/edit.ejs', {
-        store: foundStore
+      console.log(foundUser)
+      res.render('users/edit.ejs', {
+        store: foundUser
       });
     };
   });
 });
 
+
 router.put('/:id', (req, res) => {
 
-  Store.findByIdAndUpdate(req.params.id, req.body,(err, updateResponse) => {
+  User.findByIdAndUpdate(req.params.id, req.body,(err, updateUser) => {
     if(err){
       res.send(err);
     } else {
-      console.log(updateResponse);
-      res.redirect('/stores/' + req.params.id);
+      console.log(updateUser);
+      res.redirect('/users/' + req.params.id);
     }
   })
 })
 
 
 router.get("/:id",(req,res,next) => {
-	Store.findById(req.params.id, (err,store)=>{
+	User.findById(req.params.id, (err,user)=>{
 		if(err) next(err);
 		else{
-			res.render("stores/show.ejs",{
-				store:store
+			res.render("users/show.ejs",{
+				user:user
 			})
 		}
 	})
 })
 
+
 router.post('/',(req,res,next) => {
-	Store.create(req.body,(err,stores) =>{
+	User.create(req.body,(err,users) =>{
 		if(err) next(err);
 		else {
-			res.redirect("/stores")
+			res.redirect("/users")
 		}
 	})
 })
